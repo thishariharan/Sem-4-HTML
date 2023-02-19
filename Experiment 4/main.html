@@ -1,1 +1,120 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Quetionizer</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="stylesheet" href="formain.css">
+        <script src="formain.js"></script>
+    </head>
+    <body id="bd">
+        <div class="clr"><h1 style="text-align: center">Quetionizer.in</h1></div>
+        <div class="ad1"><h2>Ad Box 1</h2></div>
+        <div class="main">
+            <h3 class="ques"> I - Sort the Given Car list Ascending order based on its Price,</h3>
+            
+            <p id = "demo"> </p>
+            <p>&emsp;&emsp;&emsp;Press the below button to sort it out...</p>
+            <button class="btn" onclick="displayCars()"> Reveal Answer </button>
+            <p id = "res"></p> 
+            <script>
 
+                const cars = [{ make: "Toyota", model: "Corolla", year: 2020, price: 20000 },
+			{ make: "Honda", model: "Civic", year: 2021, price: 22000 },{ make: "Ford", model: "Mustang", year: 2019, price: 25000 },
+			{ make: "Chevrolet", model: "Camaro", year: 2022, price: 30000 }];
+                let j=0;
+                let txt="";
+            for(let i in cars)
+            {
+                j = j+1;
+                txt += "<b> Car - "+j+" </b>: Maker : "+cars[i].make+" Model : "+cars[i].model+" Year : "+cars[i].year+" Price : "+cars[i].price+" . <br>"
+            }
+            
+			document.getElementById("demo").innerHTML = txt;
+
+		function displayCars() {
+			cars.sort((a, b) => a.price - b.price);
+			let tableHTML = "<table><tr><th>Make</th><th>Model</th><th>Year</th><th>Price</th></tr>";
+			for (let car of cars) {
+				tableHTML += `<tr><td>${car.make}</td><td>${car.model}</td><td>${car.year}</td><td>${car.price}</td></tr>`;
+			}
+			tableHTML += "</table>";
+
+			// Display the table to the user
+			document.getElementById("res").innerHTML = tableHTML;
+		}
+
+            </script>       
+               <br><br>
+
+            <div class="ques"> II - Computing the Sum and Product of a Array, </div>
+            <p id="demo2"></p>
+            <p>&emsp;&emsp;&emsp;Press the below button to Find the Sum and Product of this Array...</p>
+            <button class="btn" onclick="ptr()"> Reveal Answer </button>
+            <p id = "res2"></p> 
+            <script>
+                const arr = [2,4,6,8,10]
+                document.getElementById("demo2").innerHTML = "The Array values are "+arr;
+                function ptr()
+                {
+                    var i,s=0,p=1;
+                    for(i=0;i<arr.length;i++)
+                    {
+                        s = s+arr[i];
+                        p = p*arr[i];
+                    }
+                    document.getElementById("res2").innerHTML = "So, The Sum of array values is "+s+"<br> And, the Product is "+p;
+                }
+            </script>
+            <br><br>
+
+            <div class="ques"> III - Checking wheather the given String is Anagram or not, </div>
+            <p id="demo3"></p>
+            <p>&emsp;&emsp;&emsp;Press the below button to check if the String is Anagram or not...</p>
+            <button class="btn" onclick="cks()"> Reveal Answer </button>
+            <p id = "res3"></p> 
+            <script>
+                let a = "LISTEN";
+                let b = "SILENT";
+                document.getElementById("demo3").innerHTML = "The given words are ' "+a+" ' and ' "+b+" '";
+
+                function cks()
+                {
+                    let s1 = a.split('').sort().join('');
+                    let s2 = b.split('').sort().join('');
+                    if(s1 === s2)
+                    {
+                        document.getElementById("res3").innerHTML = " The Given words are Anagram as it has the elements "+s1;
+                    }
+                    else
+                    {
+                        document.getElementById("res3").innerHTML = " The Given words are not Anagram as it has the elements "+s2;
+                    }
+                }
+            </script>
+            <br><br>
+
+            <div class="ques"> IV - Search the Date from the given Sentence, </div>
+            <p id="demo4"></p>
+            <p>&emsp;&emsp;&emsp;Press the below button to find the Date...</p>
+            <button class="btn" onclick="st()"> Reveal Answer </button>
+            <p id = "res4"></p> 
+            <script>
+                let tex = " The term for Programs 'Hello world' was introduced on the year 1972 .";
+                document.getElementById("demo4").innerHTML = "The Given string is,<br>&emsp;&emsp;&emsp;"+tex+"<br>&emsp;And now, we are supposed to find the Year - ' 1972 ' .";
+                function st()
+                {
+                    var matches = tex.match(/(\d+)/);
+                    if (matches)
+                    {
+                        document.getElementById("res4").innerHTML = matches[0];
+                    }
+                }
+                
+            </script>
+            <br><br>
+
+        </div>
+        <div class="ad2"><h2>Ad Box 2</h2></div>
+    </body>
+</html>
