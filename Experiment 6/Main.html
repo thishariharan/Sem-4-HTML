@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Java Query</title>
+    <link rel="stylesheet" href="mns.css">
+    <script src="https://code.jquery.com/jquery-3.5.0.js"></script>
+</head>
+<body id="bck">    
+    <div id="hd">
+        <h1> A J Query Web-Page </h1>
+    </div>   
+    <div id="mn">
+        <div id="Q1">
+            <h2>This is the First Question to Insert a new Word to the Unordered List,</h2>
+            <br>If the Given Unordered List is as : <p id="qdem1"></p>
+            The New Unordered List is as, <p id="lt"></p>
+            <button onclick="ist()">Insert a Word</button>
+        </div>
+        <hr>
+        <div id="Q2">
+            <h2>This is the Second Question to Find the Occurrence of a Particular word in a Sentence,</h2>
+            <br>If the Given Sentence is : <p id="qdem2"></p>
+            To Find the Occurrence, enter the word here - <input type="text" id="ids" name="ins" placeholder="Type Here">
+            <p id="ans"></p>
+            <button id="btn" onclick="spt()">Find Occurrence</button>
+        </div>
+    </div>
+    <script>
+        let lst = [4,5,2,7,8];
+        let tlt = "";
+        var q=0;
+        for(q=0;q<lst.length;q++)
+        {
+            tlt = tlt + " " + lst[q];
+        }
+        document.getElementById("qdem1").innerHTML = tlt;
+        function ist()
+        {
+            lst.push(Math.floor(Math.random() * 10) + 1);
+            tlt = "";
+            var rc = '#'+ ('000000' + Math.floor(Math.random()*16777215).toString(16)).slice(-6);
+            for(q=0;q<lst.length;q++)
+            {
+                tlt = tlt + " " + lst[q];
+            }
+            var x = Math.floor(Math.random() * 256);
+            var y = Math.floor(Math.random() * 256);
+            var z = Math.floor(Math.random() * 256);
+            var rc = "rgb(" + x + "," + y + "," + z + ")";
+            $(document).ready(function(){
+                $("#lt").css("background-color", rc);
+            });
+            document.getElementById("lt").innerHTML = tlt;
+        }
+
+        let txt = "Hello World this JQuery is an Open Source which can be accesed and used by anyone, Just for Free"
+        document.getElementById("qdem2").innerHTML = txt;
+        function spt()
+        {
+            var wds = txt.split(" ");
+            var i=0,res="";
+            //
+            $(document).ready(function(){
+                var c = ($("#ids").val()).toLowerCase(),chk;
+                while(i<wds.length)
+                {
+                    //chk = wds[i].toLowerCase();
+                    if(c == wds[i].toLowerCase())
+                    {
+                        document.getElementById("ans").innerHTML = "So, the Word "+c+" is Present at "+i+" Position of the Sentence.";
+                    }
+                    else if((i>=wds.length))
+                    {                    
+                        document.getElementById("ans").innerHTML = "Hey, There is no such Words in the Sentence.";
+                    }
+                    i = i+1;
+                }
+            })            
+        }
+    </script>
+</body>
+</html>
