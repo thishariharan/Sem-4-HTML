@@ -12,7 +12,7 @@
             <th>Price</th>
             <th>Availability</th>
           </tr>
-          <xsl:for-each select="product[price &gt; 50]">
+          <xsl:for-each select="product[price &gt; 3000]">
             <tr>
               <td><xsl:value-of select="name"/></td>
               <td><xsl:value-of select="description"/></td>
@@ -20,7 +20,7 @@
               <td><xsl:value-of select="avl"/></td>
             </tr>
           </xsl:for-each>
-          <xsl:for-each select="product[price &lt;= 50]">
+          <xsl:for-each select="product[price &lt;= 3000]">
             <tr>
               <td><xsl:value-of select="name"/></td>
               <td><xsl:value-of select="description"/></td>
